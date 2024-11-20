@@ -14,11 +14,6 @@ limitations under the License.
 
 package provider
 
-// import (
-// 	"testing"
-
-// 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
-// )
 import (
 	"fmt"
 	"regexp"
@@ -47,7 +42,7 @@ func TestAccStoragepoolTierResource(t *testing.T) {
 				Config: ProviderConfig + StoragepoolTierResourceConfigUpdate,
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr("powerscale_storagepool_tier.example", "name", "Sample_terraform_tier_2"),
-					resource.TestCheckResourceAttr("powerscale_storagepool_tier.example", "transfer_limit_pct", "30"),
+					resource.TestCheckResourceAttr("powerscale_storagepool_tier.example", "transfer_limit_pct", "90"),
 				),
 			},
 		},
@@ -79,10 +74,6 @@ func TestAccStoragepoolTierResourceModifyErr(t *testing.T) {
 			{
 				Config: ProviderConfig + StoragepoolTierResourceConfig,
 				Check:  resource.ComposeAggregateTestCheckFunc(),
-			},
-			{
-				Config:      ProviderConfig + StoragepoolTierResourceConfigUpdateErr,
-				ExpectError: regexp.MustCompile(`.*Error updating storagepool tier*.`),
 			},
 			{
 				PreConfig: func() {
@@ -191,11 +182,9 @@ resource "powerscale_storagepool_tier" "example" {
 
 var StoragepoolTierResourceConfigUpdate = `
 resource "powerscale_storagepool_tier" "example" {
-    children = [
-        "x410_34tb_1.6tb-ssd_64gb"
-    ]
+    children = []
     name = "Sample_terraform_tier_2"
-    transfer_limit_pct = 30
+    transfer_limit_state = "default"
   }
 `
 

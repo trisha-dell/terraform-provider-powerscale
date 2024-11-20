@@ -92,6 +92,12 @@ func (r *StoragepoolTierResource) Schema(ctx context.Context, req resource.Schem
 				MarkdownDescription: "Specifies a string which represents the unique identifier of storagepool tier",
 				Computed:            true,
 			},
+			"lnns": schema.ListAttribute{
+				Description:         "The nodes that are part of this tier.",
+				MarkdownDescription: "The nodes that are part of this tier.",
+				Computed:            true,
+				ElementType:         types.Int32Type,
+			},
 		},
 	}
 }

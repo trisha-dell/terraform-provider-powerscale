@@ -18,14 +18,13 @@ terraform {
   required_providers {
     powerscale = {
       source = "registry.terraform.io/dell/powerscale"
-      version = "1.0.0"
     }
   }
 }
 
 provider "powerscale" {
-  username = "root"
-  password = "p@ncake"
-  endpoint = "https://10.230.24.249:8080"
-  insecure = true
+  username = var.username
+  password = var.password
+  endpoint = var.endpoint
+  insecure = var.insecure
 }

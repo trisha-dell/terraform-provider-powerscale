@@ -14,8 +14,8 @@
 # limitations under the License.
 
 # The command is
-#terraform import powerscale_storagepool_tier.example global_setting name_of_storagepool_tier
+# terraform import powerscale_storagepool_tier.example id_of_storagepool_tier
 # Example:
-terraform import powerscale_storagepool_tier.example global_setting "tier"
+terraform import powerscale_storagepool_tier.example "tier"
 # after running this command, populate parameters in the config file to start managing this resource.
 # Note: running "terraform show" after importing shows the current config/state of the resource.

@@ -24,6 +24,8 @@ type StoragepoolTierResourceModel struct {
 	// Nodepools. The names or IDs of the tier's children.
 	Id types.Int64 `tfsdk:"id"`
 	// The unique identifier of the storagepool tier.
+	Lnns types.List `tfsdk:"lnns"`
+	// The nodes that are part of this tier.
 	Name types.String `tfsdk:"name"`
 	// The tier name.
 	TransferLimitPct types.Int64 `tfsdk:"transfer_limit_pct"`
