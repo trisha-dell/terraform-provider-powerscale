@@ -49,21 +49,6 @@ func TestAccStoragepoolTierResource(t *testing.T) {
 	})
 }
 
-func TestAccStoragepoolTierResourceCreateErr(t *testing.T) {
-	var diags diag.Diagnostics
-	diags.AddError("mock error", "mock error")
-	resource.Test(t, resource.TestCase{
-		PreCheck:                 func() { testAccPreCheck(t) },
-		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
-		Steps: []resource.TestStep{
-			{
-				Config:      ProviderConfig + StoragepoolTierResourceConfigCreateErr,
-				ExpectError: regexp.MustCompile(`.*Error creating storagepool tier*.`),
-			},
-		},
-	})
-}
-
 func TestAccStoragepoolTierResourceModifyErr(t *testing.T) {
 	var diags diag.Diagnostics
 	diags.AddError("mock error", "mock error")

@@ -21,6 +21,7 @@ import (
 	"context"
 	powerscale "dell/powerscale-go-client"
 	"fmt"
+	"reflect"
 	"strconv"
 
 	"terraform-provider-powerscale/client"
@@ -188,12 +189,19 @@ func (r *StoragepoolTierResource) Update(ctx context.Context, req resource.Updat
 		editValues.Name = plan.Name.ValueStringPointer()
 	}
 
-	if !state.Children.Equal(plan.Children) {
+	if !reflect.DeepEqual(state.Children, plan.Children) {
 		var ChildrenList []string
-		if diags := plan.Children.ElementsAs(ctx, &ChildrenList, false); diags.HasError() {
-			return
+		if len(plan.Children.Elements()) > 0 {
+			diags := plan.Children.ElementsAs(ctx, &ChildrenList, false)
+			if diags.HasError() {
+				resp.Diagnostics.Append(diags...)
+				return
+			}
+
+			editValues.Children = append(make([]string, 0), ChildrenList...)
+		} else {
+			editValues.Children = make([]string, 0)
 		}
-		editValues.Children = append(make([]string, 0), ChildrenList...)
 	}
 
 	updatedThroughCondition := false
