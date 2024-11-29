@@ -49,7 +49,7 @@ limitations under the License.
 
 # Available actions: Create, Update, Delete and Import.
 # After `terraform apply` of this example file will create the storage pool tier on the PowerScale array with the attributes set in the config.
-# For update, only name and path is supported. transfer_limit_pct and transfer_limit_state are mutually exclusive
+# For update, name, children, transfer_limit_pct and transfer_limit_state are supported. transfer_limit_pct and transfer_limit_state are mutually exclusive
 
 resource "powerscale_storagepool_tier" "example" {
   # Required field both for creating and updating
