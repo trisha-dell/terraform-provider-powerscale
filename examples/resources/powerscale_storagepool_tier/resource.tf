@@ -21,9 +21,11 @@ limitations under the License.
 
 resource "powerscale_storagepool_tier" "example" {
   # Required field both for creating and updating
+  name               = "Sample_terraform_tier_7"
+
+  # Optional parameters
   children = [
-        "x410_34tb_1.6tb-ssd_64gb"
-    ]
-  name = "Sample_terraform_tier_7"
+    "x410_34tb_1.6tb-ssd_64gb"
+  ]
   transfer_limit_pct = 40
 }
