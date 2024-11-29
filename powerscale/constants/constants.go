@@ -508,6 +508,4 @@ const (
 
 	// DeleteStoragepoolTierErrorMsg specifies error details occurred while deleting Storage pool Tier.
 	DeleteStoragepoolTierErrorMsg = "Could not delete storagepool tier "
-
 )
-
