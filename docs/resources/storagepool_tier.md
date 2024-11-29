@@ -53,7 +53,7 @@ limitations under the License.
 
 resource "powerscale_storagepool_tier" "example" {
   # Required field both for creating and updating
-  name               = "Sample_terraform_tier_7"
+  name = "Sample_terraform_tier_7"
 
   # Optional parameters
   children = [
